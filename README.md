@@ -18,13 +18,13 @@ A. Bas, P. Huber, W. A. P. Smith, M. Awais and J. Kittler. "3D Morphable Models 
 
 We train our network using the [MatConvNet](http://www.vlfeat.org/matconvnet/) library. Plese refer to the [installation page](http://www.vlfeat.org/matconvnet/install/) for the instructions.
 
-In order to start the training, you need to create the resampled expression model first. To do that, you need (1) [Basel Face Model](http://faces.cs.unibas.ch/bfm), `01_MorphableModel.mat` and (2) [3DDFA Expression Model](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/3DDFA.zip), `Model_Expression.mat`. You can set the paths accordingly and run the prepareExpressionBFM function in the prepareModel folder to build a resampled expression model.
+In order to start the training, you need to create the resampled expression model first. To do that, you need (1) [Basel Face Model](http://faces.cs.unibas.ch/bfm), `01_MorphableModel.mat` and (2) [3DDFA Expression Model](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/3DDFA.zip), `Model_Expression.mat`. You can set the paths accordingly and run the `prepareExpressionBFM` function in the prepareModel folder to build a resampled expression model.
 
-Finally, run the dagnn_3dmmasstn.m script to start the training.
+Finally, run the `dagnn_3dmmasstn.m` script to start the training.
 
 #### Localiser Network
 
-The localiser network is a CNN that takes an image as input and regresses the pose and shape parameters, theta (theta = R, t, logs, alpha). For our localiser network, we use the pre-trained [VGGFaces](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/) architecture, delete the classification layer and add a new fully connected layer with 6 + D outputs. The pre-trained models can be downloaded from MatConvNet [model repository](http://www.vlfeat.org/matconvnet/pretrained/).
+The localiser network is a CNN that takes an image as input and regresses the pose and shape parameters, theta (*θ* = **r**, **t**, *logs*, **α**). For our localiser network, we use the pre-trained [VGGFaces](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/) architecture, delete the classification layer and add a new fully connected layer with 6 + *D* outputs. The pre-trained models can be downloaded from MatConvNet [model repository](http://www.vlfeat.org/matconvnet/pretrained/).
 
 #### Grid Generator Network
 Our grid generator combines a linear statistical model with a scaled orthographic projection. We apply a 3D transformation and projection to a 3D mesh that comes from the morphable model. The intensities sampled from the source image are then assigned to the corresponding points in a flattened 2D grid.
@@ -40,6 +40,24 @@ You can find the UV coordinates as [BFM_UV.mat file](#) in the util folder.
 ## Customised Layers
 
 In this section, we summarise our customised layers and loss functions. Please refer to the [paper](http://arxiv.org/abs/1708.07199) for more details.
+
+* **3D morphable model layer** generates a shape **X**, comprising *N* 3D vertices by taking a linear combination of principal components stored in the matrix and the mean shape, according to shape parameters **α**.
+* **Axis-angle to rotation matrix layer** converts an axis-angle representation of a rotation, **r**, into a rotation matrix **R**.
+* **3D rotation layer** takes as input a rotation matrix **R** and *N* 3D points **X**, and applies the rotation.
+* **Orthographic projection layer** takes as input a set of *N* 3D points **X'** and outputs *N* 2D points **Y** by applying an orthographic projection along the *z* axis.
+* **Scaling layers** scale the 2D points *Y* based on scale *s*, after the log scale *logs* transformed to scale *s*.
+* **Translation layer** generates the 2D sample points by adding a 2D translation **t** to each of the scaled points.
+* **Grid layer** takes as input 2x*N* points and produces 2x*H'W'* grid using re-sampled 3DMM which has *N=H'W'* vertices and each vertex *i*, has an associated UV coordinate. To understand how to compute the re-sampled model over a uniform grid in the UV space, please refer to the `resampleModel` function and the sampling section of the paper.
+* **Bilinear sampler** is a layer that is exactly as in the original STN.
+* **Visibility (self-occlusions) layer** takes as input the rotation matrix **R** and the shape parameters **α** and outputs a binary occlusion mask **M**.
+* **Masking layer** combines the sampled image and the visibility map via pixel-wise products.
+
+#### Geometric Loss Functions
+
+* **Bilateral symmetry loss** measures asymmetry of the sampled face texture over visible pixels.
+* **Siamese multi-view fitting loss** penalises differences between multiple images of the same face in different poses.
+* **Landmark loss** minimises the Euclidean distance between observed and predicted 2D points.
+* **Statistical prior loss** minimises an appearance error, regularising the statistical shape prior (We scale the shape basis vectors such that the shape parameters follow a standard multivariate normal distribution).
 
 ## Dependencies
 
