@@ -1,0 +1,29 @@
+%21 Landmark points for Basel Face Model res=224 (AFLW annotation)
+%1-6: left to right eyebrows
+%7-12: left to right eyes
+%13-17: left ear - nose - right ear 
+%18-20: mouth
+%21: chin
+%
+10130
+9037
+8834
+8863
+9108
+10255
+13285
+12850
+12859
+12902
+12911
+13372
+28688
+19814
+18256
+19835
+28881
+27647
+26544
+27682
+36624
+
