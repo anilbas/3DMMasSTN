@@ -32,7 +32,7 @@ Our grid generator combines a linear statistical model with a scaled orthographi
 ## UV texture space embedding for Basel Face Model
 The output of our 3DMM-STN is a resampled image in a flattened 2D texture space in which the images are in dense, pixel-wise correspondence. In other words, the output grid is a texture space flattening of the 3DMM mesh. Specifically, we compute a Tutte embedding using conformal Laplacian weights and with the mesh boundary mapped to a square. To ensure a symmetric embedding we map the symmetry line to the symmetry line of the square, flatten only one side of the mesh and obtain the flattening of the other half by reflection. 
 
-You can find the UV coordinates as [BFM_UV.mat file](#) in the util folder.
+You can find the UV coordinates as [BFM_UV.mat file](https://github.com/anilbas/3DMMasSTN/blob/master/util/BFM_UV.mat) in the util folder.
 <p align="center">
 <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/UV.png" alt="The output grid visualisation using the mean texture" width="25%"><img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/geometry.png" alt="The mean shape as a geometry image" width="25%">
 </p>
@@ -47,7 +47,7 @@ In this section, we summarise our customised layers and loss functions. Please r
 * **Orthographic projection layer** takes as input a set of *N* 3D points **X'** and outputs *N* 2D points **Y** by applying an orthographic projection along the *z* axis.
 * **Scaling layers** scale the 2D points *Y* based on scale *s*, after the log scale *logs* transformed to scale *s*.
 * **Translation layer** generates the 2D sample points by adding a 2D translation **t** to each of the scaled points.
-* **Grid layer** takes as input 2x*N* points and produces 2x*H'W'* grid using re-sampled 3DMM which has *N=H'W'* vertices and each vertex *i*, has an associated UV coordinate. To understand how to compute the re-sampled model over a uniform grid in the UV space, please refer to the `resampleModel` function and the sampling section of the paper.
+* **Grid layer** takes as input 2x*N* points and produces 2x*H'W'* grid using re-sampled 3DMM which has *N=H'W'* vertices and each vertex *i*, has an associated UV coordinate. To understand how to compute the re-sampled model over [a uniform grid in the UV space](#uv-texture-space-embedding-for-basel-face-model), please refer to the `resampleModel` function and the sampling section of the paper.
 * **Bilinear sampler** is a layer that is exactly as in the original STN.
 * **Visibility (self-occlusions) layer** takes as input the rotation matrix **R** and the shape parameters **α** and outputs a binary occlusion mask **M**.
 * **Masking layer** combines the sampled image and the visibility map via pixel-wise products.
