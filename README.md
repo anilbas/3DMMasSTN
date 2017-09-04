@@ -2,7 +2,21 @@
 
 This page shows how to use a 3D morphable model as a spatial transformer within a convolutional neural network (CNN). It is an extension of the original spatial transformer network in that we are able to interpret and normalise 3D pose changes and self-occlusions. The network (specifically, the localiser part of the network) learns to fit a 3D morphable model to a single 2D image without needing labelled examples of fitted models.
 
-<img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/fig1.png" alt="Overview of the 3DMM-STN" width="50%"><img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/fig2.png" alt="The grid generator network within a 3DMM-STN" width="50%">
+<p align="center">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/elon_musk_34.jpg" alt="Elon Musk (34)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/christian_bale_51.jpg" alt="Christian Bale (51)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/elisha_cuthbert_53.jpg" alt="Elisha Cuthbert (53)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/clint_eastwood_62.jpg" alt="Clint Eastwood (62)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/emma_watson_73.jpg" alt="Emma Watson (73)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/chuck_palahniuk_48.jpg" alt="Chuck Palahniuk (48)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/nelson_mandela_52.jpg" alt="Nelson Mandela (52)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/kim_jong-un_60.jpg" alt="Kim Jong-un (60)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/ben_affleck_66.jpg" alt="Ben Affleck (66)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/courteney_cox_127.jpg" alt="Courteney Cox (127)" width="19.4%">
+</p>
+<p align="center">
+A set of mean flattened images that are obtained by applying the 3DMM-STN to multiple images of the same person from the <a href="http://www.umdfaces.io">UMDFaces Dataset</a>.<br><i>(Please hover over the image to see the subject's name and the number of images used for averaging)</i> 
+</p>
 
 The proposed architecture is based on a purely geometric approach in which only the shape component of a 3DMM is used to geometrically normalise an image. Our method can be trained in an unsupervised fashion, and thus does not depend on synthetic training data or the fitting results of an existing algorithm.
 
@@ -21,6 +35,8 @@ We train our network using the [MatConvNet](http://www.vlfeat.org/matconvnet/) l
 In order to start the training, you need to create the resampled expression model first. To do that, you need (1) [Basel Face Model](http://faces.cs.unibas.ch/bfm), `01_MorphableModel.mat` and (2) [3DDFA Expression Model](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/Code/3DDFA.zip), `Model_Expression.mat`. You can set the paths accordingly and run the `prepareExpressionBFM` function in the prepareModel folder to build a resampled expression model.
 
 Finally, run the `dagnn_3dmmasstn.m` script to start the training.
+
+<img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/fig1.png" alt="Overview of the 3DMM-STN" width="50%"><img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/fig2.png" alt="The grid generator network within a 3DMM-STN" width="50%">
 
 #### Localiser Network
 
