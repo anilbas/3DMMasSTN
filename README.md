@@ -3,16 +3,26 @@
 This page shows how to use a 3D morphable model as a spatial transformer within a convolutional neural network (CNN). It is an extension of the original spatial transformer network in that we are able to interpret and normalise 3D pose changes and self-occlusions. The network (specifically, the localiser part of the network) learns to fit a 3D morphable model to a single 2D image without needing labelled examples of fitted models.
 
 <p align="center">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/elon_musk_34.jpg" alt="Elon Musk (34)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/christian_bale_51.jpg" alt="Christian Bale (51)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/elisha_cuthbert_53.jpg" alt="Elisha Cuthbert (53)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/clint_eastwood_62.jpg" alt="Clint Eastwood (62)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/emma_watson_73.jpg" alt="Emma Watson (73)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/chuck_palahniuk_48.jpg" alt="Chuck Palahniuk (48)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/nelson_mandela_52.jpg" alt="Nelson Mandela (52)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/kim_jong-un_60.jpg" alt="Kim Jong-un (60)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/ben_affleck_66.jpg" alt="Ben Affleck (66)" width="19.4%">
-  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/courteney_cox_127.jpg" alt="Courteney Cox (127)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/elon_musk_34.jpg" 
+       alt="Elon Musk (34)" title="Elon Musk (34)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/christian_bale_51.jpg" 
+       alt="Christian Bale (51)" title="Christian Bale (51)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/elisha_cuthbert_53.jpg" 
+       alt="Elisha Cuthbert (53)" title="Elisha Cuthbert (53)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/clint_eastwood_62.jpg" 
+       alt="Clint Eastwood (62)" title="Clint Eastwood (62)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/emma_watson_73.jpg" 
+       alt="Emma Watson (73)" title="Emma Watson (73)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/chuck_palahniuk_48.jpg" 
+       alt="Chuck Palahniuk (48)" title="Chuck Palahniuk (48)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/nelson_mandela_52.jpg"
+       alt="Nelson Mandela (52)" title="Nelson Mandela (52)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/kim_jong-un_60.jpg" 
+       alt="Kim Jong-un (60)" title="Kim Jong-un (60)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/ben_affleck_66.jpg"
+       alt="Ben Affleck (66)" title="Ben Affleck (66)" width="19.4%">
+  <img src="https://github.com/anilbas/3DMMasSTN/blob/master/img/average/courteney_cox_127.jpg" 
+       alt="Courteney Cox (127)" title="Courteney Cox (127)" width="19.4%">
 </p>
 <p align="center">
 A set of mean flattened images that are obtained by applying the 3DMM-STN to multiple images of the same person from the <a href="http://www.umdfaces.io">UMDFaces Dataset</a>.<br><i>(Please hover over the image to see the subject's name and the number of images used for averaging)</i> 
