@@ -28,10 +28,11 @@ if ~isfield(opts.train, 'gpus'), opts.train.gpus = []; end
 % -------------------------------------------------------------------------
 %                                                    Prepare model and data
 % -------------------------------------------------------------------------
+addpath(genpath(pwd));
 % load landmarks
 idx = readLandmarks('util/landmarks/Landmarks21_112.anl');
 % load model
-model = load('model/model.mat');
+model = load('model.mat');
 % load network
 net = dagnn_3dmmasstn_init(model,idx,opts);
 % load data
