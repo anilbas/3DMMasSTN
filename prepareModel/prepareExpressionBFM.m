@@ -5,7 +5,7 @@ load('01_MorphableModel.mat');
 load('3DDFA_Release/Matlab/Model_Expression.mat');
 
 % Load FW to BFM mapping
-load('map_tddfa_to_basel.mat');
+load('util/map_tddfa_to_basel.mat');
 % Fix zero-based indexing
 map_tddfa_to_basel=map_tddfa_to_basel+1;
 
@@ -25,11 +25,12 @@ for i=1:5
     model.shapePC(:,i+5) = expression(:);
 end
 %% Load UV coordinates and resample model
-load('BFM_UV.mat');
+load('util/BFM_UV.mat');
 [ newmodel ] = resampleModel( shapeMU,model.shapePC,[],tl,UV,112 );
 newmodel.shapeMU=newmodel.shapeMU./1000;
 newmodel.shapePC=newmodel.shapePC./1000;
-%%
+save model.mat -struct newmodel
+%% Generate random mesh
 clear FV
 FV.faces = newmodel.faces;
 alpha = randn(10,1);
