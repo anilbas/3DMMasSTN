@@ -1,5 +1,7 @@
 # 3D Morphable Models as Spatial Transformer Networks
 
+#### Update: A simple gradient descent method is added to show how the layers work. Please see the [demo.m](https://github.com/anilbas/3DMMasSTN/blob/master/demo.m).
+
 This page shows how to use a 3D morphable model as a spatial transformer within a convolutional neural network (CNN). It is an extension of the original spatial transformer network in that we are able to interpret and normalise 3D pose changes and self-occlusions. The network (specifically, the localiser part of the network) learns to fit a 3D morphable model to a single 2D image without needing labelled examples of fitted models.
 
 <p align="center">
