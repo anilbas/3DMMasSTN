@@ -36,7 +36,7 @@ In contrast to all previous 3DMM fitting networks, the output of our 3DMM-STN is
 
 ## Citation
 
-Please cite the [following paper](http://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w17/Bas_3D_Morphable_Models_ICCV_2017_paper.pdf) if you use this work in your research:
+Please cite the [following paper](http://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w17/Bas_3D_Morphable_Models_ICCV_2017_paper.pdf) ([DOI](http://dx.doi.org/10.1109/ICCVW.2017.110)) if you use this work in your research:
 
 A. Bas, P. Huber, W.A.P. Smith, M. Awais and J. Kittler. "3D Morphable Models as Spatial Transformer Networks". In Proc. ICCV Workshop on Geometry Meets Deep Learning, pp. 904-912, 2017.
 
